@@ -27,6 +27,7 @@
                         </div>
 
                         <hr>
+
                         <table id="example" class="table table-striped table-bordered">
                             <thead>
                                 <tr>
@@ -37,26 +38,19 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>
-                                        <button class="btn btn-success">View</button>
-                                        <button class="btn btn-warning">Update</button>
-                                        <button class="btn btn-danger">Delete</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Jacob</td>
-                                    <td>Thorn</td>
-                                    <td>
-                                        <button class="btn btn-success">View</button>
-                                        <button class="btn btn-warning">Update</button>
-                                        <button class="btn btn-danger">Delete</button>
-                                    </td>
-                                </tr>
+                                <c:forEach var="users" items="${users1}">
+                                    <tr>
+                                        <td>${users.id}</td>
+                                        <td>${users.email}</td>
+                                        <td>${users.fullName}</td>
+                                        <td>
+                                            <a href="#!" class="btn btn-success">View</a>
+                                            <a href="#!" class="btn btn-warning">Update</a>
+                                            <a href="#!" class="btn btn-danger">Delete</a>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
                         </table>
                     </div>
                 </div>
