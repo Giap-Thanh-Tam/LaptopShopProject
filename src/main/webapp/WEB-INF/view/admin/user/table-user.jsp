@@ -44,7 +44,7 @@
                                         <td>${users.email}</td>
                                         <td>${users.fullName}</td>
                                         <td>
-                                            <a href="#!" class="btn btn-success">View</a>
+                                            <a href="/admin/user/${users.id}" class="btn btn-success">View</a>
                                             <a href="#!" class="btn btn-warning">Update</a>
                                             <a href="#!" class="btn btn-danger">Delete</a>
                                         </td>
