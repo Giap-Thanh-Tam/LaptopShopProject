@@ -21,11 +21,10 @@
             <div class="container mt-5">
                 <div class="row">
                     <div class="col-12 mx-auto">
-                        <div style="display: flex; justify-content: space-between;">
+                        <div class="d-flex justify-content-between">
                             <h1>Table users</h1>
                             <a href="/admin/user/create" class="btn btn-primary">Create Users</a>
                         </div>
-
                         <hr>
 
                         <table id="example" class="table table-striped table-bordered">
@@ -45,8 +44,8 @@
                                         <td>${users.fullName}</td>
                                         <td>
                                             <a href="/admin/user/${users.id}" class="btn btn-success">View</a>
-                                            <a href="#!" class="btn btn-warning">Update</a>
-                                            <a href="#!" class="btn btn-danger">Delete</a>
+                                            <a href="/admin/user/update/${users.id}" class="btn btn-warning">Update</a>
+                                            <a href="/admin/user/delete/${users.id}" class="btn btn-danger">Delete</a>
                                         </td>
                                     </tr>
                                 </c:forEach>

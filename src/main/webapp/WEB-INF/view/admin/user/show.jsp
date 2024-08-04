@@ -23,7 +23,9 @@
                     <div class="col-12 mx-auto">
                         <div style="display: flex; justify-content: space-between;">
                             <h1>User Detail with id = ${id}</h1>
-                            <a href="/admin/user/create" class="btn btn-primary">Create Users</a>
+                            <a href="/admin/user/create" style="display: flex; align-items: center;"
+                                class="btn btn-primary">Create
+                                Users</a>
                         </div>
                         <hr>
                         <div class="card" style="width: 50%;">
@@ -31,13 +33,14 @@
                                 User information
                             </div>
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item">Id: ${id}</li>
-                                <li class="list-group-item">Email: ${email}</li>
-                                <li class="list-group-item">Fullname: ${fullName}</li>
-                                <li class="list-group-item">Address: ${Address}</li>
+                                <li class="list-group-item">Id: ${user.id}</li>
+                                <li class="list-group-item">Email: ${user.email}</li>
+                                <li class="list-group-item">Fullname: ${user.fullName}</li>
+                                <li class="list-group-item">Address: ${user.address}</li>
                             </ul>
+                            <a href="/admin/user" class="btn btn-success"> Back</a>
                         </div>
-                        </ul>
+
 
 
                     </div>
