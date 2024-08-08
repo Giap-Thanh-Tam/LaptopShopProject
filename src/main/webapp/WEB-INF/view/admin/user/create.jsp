@@ -12,7 +12,17 @@
                 <meta name="description" content="Hỏi Dân IT - Dự án laptopshop" />
                 <meta name="author" content="Hỏi Dân IT" />
                 <title>Create User</title>
-
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+                <script>
+                    $(document).ready(() => {
+                        const avatarFile = $("#avatarFile");
+                        avatarFile.change(function (e) {
+                            const imgURL = URL.createObjectURL(e.target.files[0]);
+                            $("#avatarPreview").attr("src", imgURL);
+                            $("#avatarPreview").css({ "display": "block" });
+                        });
+                    });
+                </script>
                 <link href="/css/styles.css" rel="stylesheet" />
                 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
             </head>
@@ -33,41 +43,65 @@
 
                                 <div class="mt-5">
                                     <div class="row">
-                                        <div class="col-12 mx-auto">
+                                        <div class="col-12 ">
                                             <h3>Create a user</h3>
                                             <hr />
                                             <form:form action="/admin/user/create" method="post"
-                                                modelAttribute="newUser">
-                                                <div class="mb-3">
+                                                modelAttribute="newUser" class="row">
+
+                                                <div class="mb-3 col-12 col-md-6">
                                                     <label for="InputEmail1" class="form-label">Email</label>
                                                     <form:input type="email" class="form-control" id="InputEmail1"
                                                         path="email" />
-
                                                 </div>
-                                                <div class="mb-3">
+                                                <div class="mb-3 col-12 col-md-6">
                                                     <label for="InputPassword1" class="form-label">Password</label>
                                                     <form:input type="password" class="form-control" id="InputPassword1"
                                                         path="password" />
+
+
                                                 </div>
-                                                <div class="mb-3">
+                                                <div class="mb-3 col-12 col-md-6">
                                                     <label for="InputPhonenumber1" class="form-label">Phone
                                                         number</label>
                                                     <form:input type="text" class="form-control" id="InputPhonenumber1"
                                                         path="phone" />
                                                 </div>
-                                                <div class="mb-3">
+                                                <div class="mb-3 col-12 col-md-6">
                                                     <label for="InputFullname1" class="form-label">Full
                                                         name</label>
                                                     <form:input type="text" class="form-control" id="InputFullname1"
                                                         path="fullName" />
                                                 </div>
-                                                <div class="mb-3">
+                                                <div class="mb-3 col-12">
                                                     <label for="InputAddress1" class="form-label">Address</label>
                                                     <form:input type="text" class="form-control" id="InputAddress1"
                                                         path="address" />
                                                 </div>
 
-                                                <button type="submit" class="btn btn-primary">Create</button>
+                                                <div class="mb-3 col-12 col-md-6">
+                                                    <label for="SelectRole" class="form-label">Role:</label>
+                                                    <select class="form-select" aria-label="Default select example"
+                                                        id="SelectRole">
+                                                        <option selected>Select Role</option>
+                                                        <option value="ADMIN">Admin</option>
+                                                        <option value="USER">Clients</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="mb-3 col-12 col-md-6">
+                                                    <label for="avatarFile" class="form-label">Avatar</label>
+                                                    <input class="form-control" type="file" id="avatarFile"
+                                                        accept=".png, .jpg, .jpeg">
+                                                </div>
+
+                                                <div class="mb-3 col-12">
+                                                    <img style="max-height: 250px; display: none;" alt="avatar preview"
+                                                        id="avatarPreview">
+                                                </div>
+                                                <div class="mb-3 col-12">
+                                                    <button type="submit" class="btn btn-primary">Create</button>
+                                                </div>
                                             </form:form>
 
 
