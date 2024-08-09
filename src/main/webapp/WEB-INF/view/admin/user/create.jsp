@@ -84,8 +84,8 @@
                                                     <form:select class="form-select" aria-label="Default select example"
                                                         id="SelectRole" path="role.name">
                                                         <option selected>Select Role</option>
-                                                        <form:option value="ADMIN">Admin</form:option>
-                                                        <form:option value="USER">User</form:option>
+                                                        <form:option value="ADMIN">ADMIN</form:option>
+                                                        <form:option value="USER">USER</form:option>
                                                     </form:select>
                                                 </div>
 
