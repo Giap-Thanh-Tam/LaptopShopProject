@@ -26,12 +26,12 @@ public class UserController {
 
     private final UserService userService;
     private final UploadService uploadService;
-    private final PasswordEncoder passwordEncoder;
+    // private final PasswordEncoder passwordEncoder;
 
-    public UserController(UserService userService, UploadService uploadService, PasswordEncoder passwordEncoder) {
+    public UserController(UserService userService, UploadService uploadService) {
         this.userService = userService;
         this.uploadService = uploadService;
-        this.passwordEncoder = passwordEncoder;
+        // this.passwordEncoder = passwordEncoder;
     }
 
     @RequestMapping("/")
@@ -74,10 +74,11 @@ public class UserController {
             @RequestParam("hoidanitFile") MultipartFile file) {
 
         String avatar = this.uploadService.handleSaveUploadFile(file, "avatar");
-        String hashPassword = this.passwordEncoder.encode(user.getPassword());
+        // String hashPassword = this.passwordEncoder.encode(user.getPassword());
 
         user.setAvatar(avatar);
-        user.setPassword(hashPassword);
+        // user.setPassword(hashPassword);
+        user.setPassword(user.getPassword());
         user.setRole(this.userService.getRoleByName(user.getRole().getName()));
 
         // save
