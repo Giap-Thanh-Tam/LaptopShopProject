@@ -23,19 +23,65 @@
                 <div id="layoutSidenav_content">
                     <main>
                         <div class="container-fluid px-4">
-                            <h1 class="mt-4">Manage Product</h1>
+                            <h1 class="mt-4">Manage Products</h1>
                             <ol class="breadcrumb mb-4">
                                 <li class="breadcrumb-item active"> <a href="/admin">Admin</a></li>
                                 <li class="breadcrumb-item active">Product</li>
                             </ol>
-                            <div>product</div>
+
+
+                            <div class=" mt-5">
+                                <div class="row">
+                                    <div class="col-12 mx-auto">
+                                        <div class="d-flex justify-content-between">
+                                            <h3>Table Products</h3>
+                                            <a href="/admin/product/create" class="btn btn-primary">Create a Product</a>
+                                        </div>
+                                        <hr>
+
+                                        <table id="example" class="table table-striped table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Id</th>
+                                                    <th>Name</th>
+                                                    <th>Price</th>
+                                                    <th>Factory</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <c:forEach var="products" items="${products1}">
+                                                    <tr>
+                                                        <td>${products.id}</td>
+                                                        <td>${products.name}</td>
+                                                        <td>${products.price}</td>
+                                                        <td>${products.factory}</td>
+
+                                                        <td>
+                                                            <a href="/admin/product/${products.id}"
+                                                                class="btn btn-success">View</a>
+                                                            <a href="/admin/product/update/${products.id}"
+                                                                class="btn btn-warning">Update</a>
+                                                            <a href="/admin/product/delete/${products.id}"
+                                                                class="btn btn-danger">Delete</a>
+                                                        </td>
+                                                    </tr>
+                                                </c:forEach>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
                     </main>
                     <jsp:include page="../layout/footer.jsp" />
                 </div>
             </div>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
                 crossorigin="anonymous"></script>
-            <script src="js/scripts.js"></script>
+            <!-- <script src="js/scripts.js"></script> -->
 
         </body>
 

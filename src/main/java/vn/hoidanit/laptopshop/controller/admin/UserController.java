@@ -6,6 +6,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import jakarta.validation.Valid;
 import vn.hoidanit.laptopshop.domain.User;
 
 import vn.hoidanit.laptopshop.service.UploadService;
@@ -34,6 +37,7 @@ public class UserController {
         // this.passwordEncoder = passwordEncoder;
     }
 
+    // Homepage
     @RequestMapping("/")
     public String getHomePage(Model model) {
         List<User> arrUsers = this.userService.getAllUsers();
@@ -44,6 +48,7 @@ public class UserController {
         return "hello";
     }
 
+    // Table User
     @RequestMapping("/admin/user")
     public String getTableUserPage(Model model) {
         List<User> users = this.userService.getAllUsers();
@@ -51,6 +56,7 @@ public class UserController {
         return "admin/user/show";
     }
 
+    // User Detail
     @RequestMapping("/admin/user/{id}")
     public String getUserDetailPage(Model model, @PathVariable long id) {
         // System.out.println("id: " + id);
@@ -62,19 +68,29 @@ public class UserController {
         return "admin/user/detail";
     }
 
+    // Input to Create User
     @GetMapping("/admin/user/create") // GET
     public String getCreateUserPage(Model model) {
         model.addAttribute("newUser", new User());
         return "admin/user/create";
     }
 
+    // Save User
     @PostMapping(value = "/admin/user/create")
     public String createUserPage(Model model,
-            @ModelAttribute("newUser") User user,
+            @ModelAttribute("newUser") @Valid User user, BindingResult bindingResult,
             @RequestParam("hoidanitFile") MultipartFile file) {
+
+        // validate
+        List<FieldError> errors = bindingResult.getFieldErrors();
+        for (FieldError error : errors) {
+            System.out.println(error.getObjectName() + " - " + error.getDefaultMessage());
+        }
 
         String avatar = this.uploadService.handleSaveUploadFile(file, "avatar");
         // String hashPassword = this.passwordEncoder.encode(user.getPassword());
+
+        // validate
 
         user.setAvatar(avatar);
         // user.setPassword(hashPassword);
@@ -87,6 +103,7 @@ public class UserController {
         return "redirect:/admin/user";
     }
 
+    // Update User
     @RequestMapping("/admin/user/update/{id}")
     public String getUpdateUserPage(Model model, @PathVariable long id) {
         User currentUser = this.userService.getUserById(id);
@@ -94,6 +111,7 @@ public class UserController {
         return "admin/user/update";
     }
 
+    // Save update User
     @PostMapping("/admin/user/update")
     public String postUpdateUser(Model model, @ModelAttribute("newUser") User user) {
         User currentUser = this.userService.getUserById(user.getId());
@@ -106,6 +124,7 @@ public class UserController {
         return "redirect:/admin/user";
     }
 
+    // Show delete user
     @GetMapping("/admin/user/delete/{id}")
     public String deleteUpdateUserPage(Model model, @PathVariable long id) {
         model.addAttribute("id", id);
@@ -115,6 +134,7 @@ public class UserController {
         return "admin/user/delete";
     }
 
+    // Confirm delete user
     @PostMapping("/admin/user/delete")
     public String postDeleteUpdateUser(Model model, @ModelAttribute("newUser") User user) {
         this.userService.deleteAUser(user.getId());

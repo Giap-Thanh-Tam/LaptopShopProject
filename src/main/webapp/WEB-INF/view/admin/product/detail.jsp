@@ -10,7 +10,7 @@
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
             <meta name="description" content="Hỏi Dân IT - Dự án laptopshop" />
             <meta name="author" content="Hỏi Dân IT" />
-            <title>Detail User</title>
+            <title>Detail Product</title>
 
             <link href="/css/styles.css" rel="stylesheet" />
             <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -24,35 +24,35 @@
                 <div id="layoutSidenav_content">
                     <main>
                         <div class="container-fluid px-4">
-                            <h1 class="mt-4">Detail User</h1>
+                            <h1 class="mt-4">Detail Product</h1>
                             <ol class="breadcrumb mb-4">
                                 <li class="breadcrumb-item active"> <a href="/admin">Admin</a></li>
-                                <li class="breadcrumb-item active">Detail User</li>
+                                <li class="breadcrumb-item active">Detail Product</li>
                             </ol>
                             <div class="mt-5">
                                 <div class="row">
                                     <div class="col-12 mx-auto">
                                         <div style="display: flex; justify-content: space-between;">
-                                            <h3>User Detail with id = ${id}</h3>
-                                            <a href="/admin/user/create" style="display: flex; align-items: center;"
+                                            <h3>Product Detail with id = ${id}</h3>
+                                            <a href="/admin/product/create" style="display: flex; align-items: center;"
                                                 class="btn btn-primary">Create
-                                                Users</a>
+                                                Product</a>
                                         </div>
                                         <hr>
                                         <div class="card mb-3" style="width: 50%;">
                                             <div class="card-header">
-                                                User information
+                                                Product information
                                             </div>
                                             <ul class="list-group list-group-flush">
-                                                <li class="list-group-item">Id: ${user.id}</li>
-                                                <li class="list-group-item">Email: ${user.email}</li>
-                                                <li class="list-group-item">Fullname: ${user.fullName}</li>
-                                                <li class="list-group-item">Address: ${user.address}</li>
+                                                <li class="list-group-item">Id: ${product.id}</li>
+                                                <li class="list-group-item">Name: ${product.name}</li>
+                                                <li class="list-group-item">Price: ${product.price}</li>
+                                                <li class="list-group-item">Quantity: ${product.quantity}</li>
                                             </ul>
 
-                                        </div>
-                                        <div> <a href="/admin/user" class="btn btn-success"> Back</a></div>
 
+                                        </div>
+                                        <div><a href="/admin/product" class="btn btn-success"> Back</a></div>
                                     </div>
                                 </div>
                             </div>
