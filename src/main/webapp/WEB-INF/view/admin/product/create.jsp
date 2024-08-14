@@ -50,33 +50,56 @@
                                                 modelAttribute="newProduct" class="row" enctype="multipart/form-data">
 
                                                 <div class="mb-3 col-12 col-md-6">
+                                                    <c:set var="errorName">
+                                                        <form:errors path="name" cssClass="invalid-feedback" />
+                                                    </c:set>
                                                     <label for="InputName1" class="form-label">Name</label>
-                                                    <form:input type="text" class="form-control" id="InputName1"
-                                                        path="name" />
+                                                    <form:input type="text"
+                                                        class="form-control ${not empty errorName ? 'is-invalid' : ''}"
+                                                        id="InputName1" path="name" />
+                                                    ${errorName}
                                                 </div>
                                                 <div class="mb-3 col-12 col-md-6">
+                                                    <c:set var="errorPrice">
+                                                        <form:errors path="price" cssClass="invalid-feedback" />
+                                                    </c:set>
                                                     <label for="InputPrice1" class="form-label">Price</label>
-                                                    <form:input type="text" class="form-control" id="InputPrice1"
-                                                        path="price" />
-
+                                                    <form:input type="text"
+                                                        class="form-control ${not empty errorPrice ? 'is-invalid' : ''}"
+                                                        id="InputPrice1" path="price" />
+                                                    ${errorPrice}
                                                 </div>
                                                 <div class="mb-3 col-12 ">
+                                                    <c:set var="errorDetailDesc">
+                                                        <form:errors path="detailDesc" cssClass="invalid-feedback" />
+                                                    </c:set>
                                                     <label for="InputdetailDesc1" class="form-label">Detail description
                                                     </label>
-                                                    <form:textarea type="text" class="form-control"
+                                                    <form:textarea type="text"
+                                                        class="form-control ${not empty errorDetailDesc ? 'is-invalid' : ''}"
                                                         id="InputdetailDesc1" path="detailDesc" />
-
+                                                    ${errorDetailDesc}
                                                 </div>
                                                 <div class="mb-3 col-12 col-md-6">
+                                                    <c:set var="errorShortDesc">
+                                                        <form:errors path="shortDesc" cssClass="invalid-feedback" />
+                                                    </c:set>
                                                     <label for="InputShortdesc1" class="form-label">Short description
                                                         name</label>
-                                                    <form:input type="text" class="form-control" id="InputShortdesc1"
-                                                        path="shortDesc" />
+                                                    <form:input type="text"
+                                                        class="form-control ${not empty errorShortDesc ? 'is-invalid' : ''}"
+                                                        id="InputShortdesc1" path="shortDesc" />
+                                                    ${errorShortDesc}
                                                 </div>
                                                 <div class="mb-3 col-12 col-md-6">
+                                                    <c:set var="errorQuantity">
+                                                        <form:errors path="quantity" cssClass="invalid-feedback" />
+                                                    </c:set>
                                                     <label for="InputQuantity1" class="form-label">Quantity</label>
-                                                    <form:input type="text" class="form-control" id="InputQuantity1"
-                                                        path="quantity" />
+                                                    <form:input type="text"
+                                                        class="form-control ${not empty errorQuantity ? 'is-invalid' : ''}"
+                                                        id="InputQuantity1" path="quantity" />
+                                                    ${errorQuantity}
                                                 </div>
 
                                                 <div class="mb-3 col-12 col-md-6">
@@ -122,6 +145,8 @@
                                                 </div>
                                                 <div class="mb-3 col-12">
                                                     <button type="submit" class="btn btn-primary">Create</button>
+                                                    <a href="/admin/product" class="btn btn-success"> Back</a>
+
                                                 </div>
                                             </form:form>
                                         </div>

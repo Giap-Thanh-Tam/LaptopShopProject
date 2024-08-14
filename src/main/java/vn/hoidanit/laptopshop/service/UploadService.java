@@ -19,7 +19,7 @@ public class UploadService {
         this.servletContext = servletContext;
     }
 
-    public String handleSaveUploadFile(MultipartFile file, String tagetFolder) {
+    public String handleSaveUploadFile(MultipartFile file, String targetFolder) {
         // private final ServletContext servletContext;
         if (file.isEmpty()) {
             return "";
@@ -30,7 +30,7 @@ public class UploadService {
         try {
             byte[] bytes = file.getBytes();
 
-            File dir = new File(rootPath + File.separator + tagetFolder);
+            File dir = new File(rootPath + File.separator + targetFolder);
             if (!dir.exists())
                 dir.mkdirs();
             // Create the file on server

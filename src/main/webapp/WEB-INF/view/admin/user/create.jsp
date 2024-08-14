@@ -58,7 +58,8 @@
                                                     <form:input type="email"
                                                         class="form-control ${not empty errorEmail ? 'is-invalid' : ''}"
                                                         id="InputEmail1" path="email" />
-                                                    <form:errors path="email" cssClass="invalid-feedback" />
+                                                    ${errorEmail}
+                                                    <!-- <form:errors path="email" cssClass="invalid-feedback" /> -->
                                                 </div>
 
 
@@ -123,6 +124,7 @@
                                                 </div>
                                                 <div class="mb-3 col-12">
                                                     <button type="submit" class="btn btn-primary">Create</button>
+                                                    <a href="/admin/user" class="btn btn-success"> Back</a>
                                                 </div>
                                             </form:form>
 

@@ -81,18 +81,17 @@ public class UserController {
             @ModelAttribute("newUser") @Valid User user, BindingResult newUserBindingResult,
             @RequestParam("hoidanitFile") MultipartFile file) {
 
+        // validate
         List<FieldError> errors = newUserBindingResult.getFieldErrors();
         for (FieldError error : errors) {
             System.out.println(error.getField() + " - " + error.getDefaultMessage());
         }
-
-        String avatar = this.uploadService.handleSaveUploadFile(file, "avatar");
-        // String hashPassword = this.passwordEncoder.encode(user.getPassword());
-
-        // validate
         if (newUserBindingResult.hasErrors()) {
             return "admin/user/create";
         }
+
+        String avatar = this.uploadService.handleSaveUploadFile(file, "avatar");
+        // String hashPassword = this.passwordEncoder.encode(user.getPassword());
 
         user.setAvatar(avatar);
         // user.setPassword(hashPassword);
