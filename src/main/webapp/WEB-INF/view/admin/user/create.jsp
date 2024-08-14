@@ -50,14 +50,28 @@
                                                 modelAttribute="newUser" class="row" enctype="multipart/form-data">
 
                                                 <div class="mb-3 col-12 col-md-6">
+                                                    <c:set var="errorEmail">
+                                                        <form:errors path="email" cssClass="invalid-feedback" />
+                                                    </c:set>
+
                                                     <label for="InputEmail1" class="form-label">Email</label>
-                                                    <form:input type="email" class="form-control" id="InputEmail1"
-                                                        path="email" />
+                                                    <form:input type="email"
+                                                        class="form-control ${not empty errorEmail ? 'is-invalid' : ''}"
+                                                        id="InputEmail1" path="email" />
+                                                    <form:errors path="email" cssClass="invalid-feedback" />
                                                 </div>
+
+
                                                 <div class="mb-3 col-12 col-md-6">
-                                                    <label for="InputPassword1" class="form-label">Password</label>
-                                                    <form:input type="password" class="form-control" id="InputPassword1"
-                                                        path="password" />
+                                                    <c:set var="errorPassword">
+                                                        <form:errors path="password" cssClass="invalid-feedback" />
+                                                    </c:set>
+
+                                                    <label for="InputPassword1" class="form-label ">Password</label>
+                                                    <form:input type="password"
+                                                        class="form-control ${not empty errorPassword ? 'is-invalid' : ''}"
+                                                        id="InputPassword1" path="password" />
+                                                    ${errorPassword}
 
 
                                                 </div>
@@ -67,11 +81,19 @@
                                                     <form:input type="text" class="form-control" id="InputPhonenumber1"
                                                         path="phone" />
                                                 </div>
+
+
                                                 <div class="mb-3 col-12 col-md-6">
-                                                    <label for="InputFullname1" class="form-label">Full
+                                                    <c:set var="errorFullName">
+                                                        <form:errors path="fullName" cssClass="invalid-feedback" />
+                                                    </c:set>
+
+                                                    <label for="InputFullname1" class="form-label ">Full
                                                         name</label>
-                                                    <form:input type="text" class="form-control" id="InputFullname1"
-                                                        path="fullName" />
+                                                    <form:input type="text"
+                                                        class="form-control ${not empty errorFullName ? 'is-invalid' : ''}"
+                                                        id="InputFullname1" path="fullName" />
+                                                    <form:errors path="fullName" cssClass="invalid-feedback" />
                                                 </div>
                                                 <div class="mb-3 col-12">
                                                     <label for="InputAddress1" class="form-label">Address</label>

@@ -78,19 +78,21 @@ public class UserController {
     // Save User
     @PostMapping(value = "/admin/user/create")
     public String createUserPage(Model model,
-            @ModelAttribute("newUser") @Valid User user, BindingResult bindingResult,
+            @ModelAttribute("newUser") @Valid User user, BindingResult newUserBindingResult,
             @RequestParam("hoidanitFile") MultipartFile file) {
 
-        // validate
-        List<FieldError> errors = bindingResult.getFieldErrors();
+        List<FieldError> errors = newUserBindingResult.getFieldErrors();
         for (FieldError error : errors) {
-            System.out.println(error.getObjectName() + " - " + error.getDefaultMessage());
+            System.out.println(error.getField() + " - " + error.getDefaultMessage());
         }
 
         String avatar = this.uploadService.handleSaveUploadFile(file, "avatar");
         // String hashPassword = this.passwordEncoder.encode(user.getPassword());
 
         // validate
+        if (newUserBindingResult.hasErrors()) {
+            return "admin/user/create";
+        }
 
         user.setAvatar(avatar);
         // user.setPassword(hashPassword);
