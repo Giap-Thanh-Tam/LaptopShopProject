@@ -53,7 +53,7 @@ public class ProductController {
     @PostMapping(value = "/admin/product/create")
     public String getCreateUserPage(Model model,
             @ModelAttribute("newProduct") @Valid Product product, BindingResult newProductBindingResult,
-            @RequestParam("imageProduct") MultipartFile file) {
+            @RequestParam("imageNameFile") MultipartFile file) {
 
         // validate
         List<FieldError> errors = newProductBindingResult.getFieldErrors();
@@ -91,12 +91,38 @@ public class ProductController {
 
     // Save Update User
     @PostMapping("/admin/product/update")
-    public String postUpdateUser(Model model, @ModelAttribute("newProduct") Product product) {
+    public String postUpdateUser(Model model, @ModelAttribute("newProduct") @Valid Product product,
+            BindingResult newProductBindingResult,
+            @RequestParam("imageNameFile") MultipartFile file
+
+    ) {
+
+        // validate
+        List<FieldError> errors = newProductBindingResult.getFieldErrors();
+        for (FieldError error : errors) {
+            System.out.println(error.getField() + " - " + error.getDefaultMessage());
+        }
+        if (newProductBindingResult.hasErrors()) {
+            return "admin/product/update";
+        }
+
         Product currentProduct = this.productService.getProductById(product.getId());
         if (currentProduct != null) {
+
+            // update new image
+            if (!file.isEmpty()) {
+                String img = this.uploadService.handleSaveUploadFile(file, "product");
+                currentProduct.setImage(img);
+            }
+
             currentProduct.setName(product.getName());
             currentProduct.setPrice(product.getPrice());
+            currentProduct.setDetailDesc(product.getDetailDesc());
+            currentProduct.setShortDesc(product.getShortDesc());
             currentProduct.setQuantity(product.getQuantity());
+            currentProduct.setFactory(product.getFactory());
+            currentProduct.setTarget(product.getTarget());
+
             this.productService.handleSaveProduct(currentProduct);
         }
         return "redirect:/admin/product";

@@ -94,7 +94,7 @@
                                                     <form:input type="text"
                                                         class="form-control ${not empty errorFullName ? 'is-invalid' : ''}"
                                                         id="InputFullname1" path="fullName" />
-                                                    <form:errors path="fullName" cssClass="invalid-feedback" />
+                                                    ${errorFullName}
                                                 </div>
                                                 <div class="mb-3 col-12">
                                                     <label for="InputAddress1" class="form-label">Address</label>

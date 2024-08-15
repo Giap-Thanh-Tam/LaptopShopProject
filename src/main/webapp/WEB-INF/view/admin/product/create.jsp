@@ -15,7 +15,7 @@
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
                 <script>
                     $(document).ready(() => {
-                        const avatarFile = $("#imageProduct");
+                        const avatarFile = $("#imageId");
                         avatarFile.change(function (e) {
                             const imgURL = URL.createObjectURL(e.target.files[0]);
                             $("#imagePreview").attr("src", imgURL);
@@ -133,16 +133,16 @@
                                                 </div>
 
                                                 <div class="mb-3 col-12 col-md-6">
-                                                    <label for="imageFile" class="form-label">Image</label>
-                                                    <input class="form-control" type="file" id="imageFile"
-                                                        accept=".png, .jpg, .jpeg" name="imageProduct" />
+                                                    <label for="imageId" class="form-label">Image</label>
+                                                    <input class="form-control" type="file" id="imageId"
+                                                        accept=".png, .jpg, .jpeg" name="imageNameFile" />
                                                 </div>
 
                                                 <div class="mb-3 col-12">
                                                     <img style="max-height: 250px; display: none;" alt="image preview"
                                                         id="imagePreview">
-
                                                 </div>
+
                                                 <div class="mb-3 col-12">
                                                     <button type="submit" class="btn btn-primary">Create</button>
                                                     <a href="/admin/product" class="btn btn-success"> Back</a>
