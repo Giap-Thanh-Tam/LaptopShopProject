@@ -38,6 +38,7 @@
                                 <h1 class="mt-4">Manage User</h1>
                                 <ol class="breadcrumb mb-4">
                                     <li class="breadcrumb-item active"> <a href="/admin">Admin</a></li>
+                                    <li class="breadcrumb-item active"> <a href="/admin/user">User</a></li>
                                     <li class="breadcrumb-item active">Create User</li>
                                 </ol>
 

@@ -29,6 +29,7 @@
                                 <h1 class="mt-4">Delete User</h1>
                                 <ol class="breadcrumb mb-4">
                                     <li class="breadcrumb-item active"> <a href="/admin">Admin</a></li>
+                                    <li class="breadcrumb-item active"> <a href="/admin/user">User</a></li>
                                     <li class="breadcrumb-item active">Delete User</li>
                                 </ol>
 

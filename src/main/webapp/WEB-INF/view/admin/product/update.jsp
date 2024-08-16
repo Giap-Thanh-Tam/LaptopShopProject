@@ -45,6 +45,7 @@
                                 <h1 class="mt-4">Update Product</h1>
                                 <ol class="breadcrumb mb-4">
                                     <li class="breadcrumb-item active"> <a href="/admin">Admin</a></li>
+                                    <li class="breadcrumb-item active"> <a href="/admin/product">Product</a></li>
                                     <li class="breadcrumb-item active">Update Product</li>
                                 </ol>
                                 <div class="mt-5">

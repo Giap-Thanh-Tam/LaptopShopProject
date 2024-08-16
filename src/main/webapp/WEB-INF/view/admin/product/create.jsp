@@ -38,6 +38,7 @@
                                 <h1 class="mt-4">Manage Product</h1>
                                 <ol class="breadcrumb mb-4">
                                     <li class="breadcrumb-item active"> <a href="/admin">Admin</a></li>
+                                    <li class="breadcrumb-item active"> <a href="/admin/product">Product</a></li>
                                     <li class="breadcrumb-item active">Create a Product</li>
                                 </ol>
 
