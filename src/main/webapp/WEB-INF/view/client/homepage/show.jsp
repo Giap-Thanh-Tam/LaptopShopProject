@@ -120,7 +120,7 @@
                                                 <c:forEach var="products" items="${products1}">
                                                     <div class="col-md-6 col-lg-4 col-xl-3">
                                                         <div class="rounded position-relative fruite-item">
-                                                            <div style=" width: 306px;
+                                                            <div style=" 
                                                             height: 214px;
                                                             object-fit: scale-down;" class="fruite-img">
                                                                 <a href="/product/${products.id}">

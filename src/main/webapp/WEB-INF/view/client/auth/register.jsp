@@ -28,7 +28,7 @@
                                             </div>
                                             <div class="card-body">
                                                 <form:form action="/register" method="post"
-                                                    modelAttribute="registerUser" class="row">
+                                                    modelAttribute="registerUser">
                                                     <div class="row mb-3">
                                                         <div class="col-md-6">
                                                             <div class="form-floating mb-3 mb-md-0">
@@ -81,10 +81,7 @@
                                                     </div>
                                                 </form:form>
                                             </div>
-                                            <div class="card-footer text-center py-3">
-                                                <div class="small"><a href="login.html">Have an account? Go to login</a>
-                                                </div>
-                                            </div>
+
                                         </div>
                                     </div>
                                 </div>

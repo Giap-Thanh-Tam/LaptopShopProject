@@ -15,16 +15,17 @@ import vn.hoidanit.laptopshop.domain.Product;
 import vn.hoidanit.laptopshop.domain.User;
 import vn.hoidanit.laptopshop.domain.dto.RegisterDTO;
 import vn.hoidanit.laptopshop.service.ProductService;
+import vn.hoidanit.laptopshop.service.UserService;
 
 @Controller
 public class HomePageController {
     private final ProductService productService;
+    private final UserService userService;
 
-    // private final RegisterDTO registerDTO;
-
-    public HomePageController(ProductService productService) {
+    public HomePageController(ProductService productService, UserService userService) {
         this.productService = productService;
-        // this.registerDTO = registerDTO;
+        this.userService = userService;
+
     }
 
     @GetMapping("/")
@@ -43,25 +44,16 @@ public class HomePageController {
 
     @PostMapping("/register")
     public String handleRegister(Model model,
-            @ModelAttribute("registerUser") RegisterDTO register) {
+            @ModelAttribute("registerUser") RegisterDTO registerDTO) {
+        User user = this.userService.registerGTOtoUser(registerDTO);
+        user.setRole(this.userService.getRoleByName("USER"));
+        this.userService.handleSaveUser(user);
+        return "redirect:/user/login";
+    }
 
-        // validate
-        // List<FieldError> errors = newUserBindingResult.getFieldErrors();
-        // for (FieldError error : errors) {
-        // System.out.println(error.getField() + " - " + error.getDefaultMessage());
-        // }
-        // if (newUserBindingResult.hasErrors()) {
-        // return "admin/user/update";
-        // }
-
-        // User currentUser = this.userService.getUserById(user.getId());
-        // if (currentUser != null) {
-        // currentUser.setAddress(user.getAddress());
-        // currentUser.setFullName(user.getFullName());
-        // currentUser.setPhone(user.getPhone());
-        // this.userService.handleSaveUser(currentUser);
-        // }
-        return "client/auth/register";
+    @GetMapping("/user/login") // GET
+    public String getLoginPage(Model model) {
+        return "client/auth/login";
     }
 
 }
