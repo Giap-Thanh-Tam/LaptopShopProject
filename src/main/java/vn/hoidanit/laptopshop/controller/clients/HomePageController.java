@@ -2,6 +2,7 @@ package vn.hoidanit.laptopshop.controller.clients;
 
 import java.util.List;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -21,10 +22,12 @@ import vn.hoidanit.laptopshop.service.UserService;
 public class HomePageController {
     private final ProductService productService;
     private final UserService userService;
+    private final PasswordEncoder passwordEncoder;
 
-    public HomePageController(ProductService productService, UserService userService) {
+    public HomePageController(ProductService productService, UserService userService, PasswordEncoder passwordEncoder) {
         this.productService = productService;
         this.userService = userService;
+        this.passwordEncoder = passwordEncoder;
 
     }
 
@@ -53,6 +56,9 @@ public class HomePageController {
         if (bindingResult.hasErrors()) {
             return "client/auth/register";
         }
+
+        String hashPassword = this.passwordEncoder.encode(registerDTO.getPassword());
+        registerDTO.setPassword(hashPassword);
 
         User user = this.userService.registerGTOtoUser(registerDTO);
         user.setRole(this.userService.getRoleByName("USER"));
