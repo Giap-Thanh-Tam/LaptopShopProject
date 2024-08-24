@@ -63,12 +63,17 @@ public class HomePageController {
         User user = this.userService.registerGTOtoUser(registerDTO);
         user.setRole(this.userService.getRoleByName("USER"));
         this.userService.handleSaveUser(user);
-        return "redirect:/user/login";
+        return "redirect:/login";
     }
 
-    @GetMapping("/user/login") // GET
+    @GetMapping("/login") // GET
     public String getLoginPage(Model model) {
         return "client/auth/login";
+    }
+
+    @GetMapping("/access-deny") // GET
+    public String getAccessDenyPage(Model model) {
+        return "client/auth/deny";
     }
 
 }

@@ -25,21 +25,26 @@ public class Product {
     @NotNull
     @Size(min = 1, message = "Name không được để trống")
     private String name;
+
     @NotNull
     @DecimalMin(value = "0", inclusive = false, message = "Price phải lớn hơn 0")
     private double price;
+
     private String image;
+
     @NotNull
     @Size(min = 1, message = "detailDesc không được để trống")
     @Column(columnDefinition = "MEDIUMTEXT")
     private String detailDesc;
+
     @NotNull
     @Size(min = 1, message = "shortDesc không được để trống")
     private String shortDesc;
+
     @NotNull
     @Min(value = 1, message = "Số lượng phải lớn hơn 0")
-
     private long quantity;
+
     private long sold;
     private String factory;
     private String target;
