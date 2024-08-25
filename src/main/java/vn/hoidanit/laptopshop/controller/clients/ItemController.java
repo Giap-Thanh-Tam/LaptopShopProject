@@ -1,5 +1,6 @@
 package vn.hoidanit.laptopshop.controller.clients;
 
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,6 +8,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import vn.hoidanit.laptopshop.domain.Product;
 import vn.hoidanit.laptopshop.service.ProductService;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class ItemController {
@@ -23,4 +29,14 @@ public class ItemController {
         model.addAttribute("product", product);
         return "client/product/detail";
     }
+
+    @PostMapping("/add-product-to-cart/{id}")
+    public String addProductToCart(@PathVariable long id, HttpServletRequest request, Authentication authentication) {
+        HttpSession session = request.getSession(false);
+        long productId = id;
+        String email = (String) session.getAttribute("email");
+        this.productService.handleAddProductToCart(email, productId);
+        return "redirect:/";
+    }
+
 }
