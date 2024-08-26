@@ -17,7 +17,9 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import vn.hoidanit.laptopshop.domain.Cart;
 import vn.hoidanit.laptopshop.domain.User;
+import vn.hoidanit.laptopshop.service.ProductService;
 import vn.hoidanit.laptopshop.service.UserService;
 
 public class CustomSuccessHandler implements AuthenticationSuccessHandler {
@@ -58,6 +60,16 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
             session.setAttribute("avatar", user.getAvatar());
             session.setAttribute("id", user.getId());
             session.setAttribute("email", user.getEmail());
+
+            int sum = user.getCart() == null ? 0 : user.getCart().getSum();
+            session.setAttribute("sum", sum);
+            // Cart cart = user.getCart();
+            // if (cart != null) {
+            // int sum = cart.getSum();
+            // session.setAttribute("sum", sum);
+            // } else {
+            // session.setAttribute("sum", 0);
+            // }
         }
 
     }
