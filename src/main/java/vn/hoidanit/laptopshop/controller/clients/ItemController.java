@@ -1,5 +1,6 @@
 package vn.hoidanit.laptopshop.controller.clients;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.security.core.Authentication;
@@ -55,7 +56,39 @@ public class ItemController {
         currentUser.setId(userId);
 
         Cart cart = this.productService.fetchByUser(currentUser);
-        List<CartDetail> cartDetail = cart.getCartDetails();
+
+        List<CartDetail> cartDetails = cart == null ? new ArrayList<CartDetail>() : cart.getCartDetails();
+
+        double totalPrice = 0;
+        for (CartDetail cd : cartDetails) {
+            totalPrice += cd.getPrice() * cd.getQuantity();
+        }
+
+        model.addAttribute("cartDetails", cartDetails);
+        model.addAttribute("totalPrices", totalPrice);
+
+        model.addAttribute("cart", cart);
+        return "client/cart/show";
+    }
+
+    @PostMapping("/delete-cart-product/{id}")
+    public String DeleteCartDetailToCart(@PathVariable long id, HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        long cartDetailId = id;
+        this.productService.handleRemoveProductToCart(cartDetailId, session);
+        return "redirect:/cart";
+    }
+
+    @GetMapping("/checkout")
+    public String getCheckOutPage(Model model, HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        long userId = (Long) session.getAttribute("id");
+        User currentUser = new User();
+        currentUser.setId(userId);
+
+        Cart cart = this.productService.fetchByUser(currentUser);
+
+        List<CartDetail> cartDetail = cart == null ? new ArrayList<CartDetail>() : cart.getCartDetails();
 
         double totalPrice = 0;
         for (CartDetail cd : cartDetail) {
@@ -65,7 +98,7 @@ public class ItemController {
         model.addAttribute("cartDetails", cartDetail);
         model.addAttribute("totalPrices", totalPrice);
 
-        return "client/cart/show";
+        return "client/cart/checkout";
     }
 
 }

@@ -51,8 +51,8 @@ public class Product {
     private String factory;
     private String target;
 
-    @OneToMany(mappedBy = "product")
-    private List<CartDetail> cartDetail;
+    // @OneToMany(mappedBy = "product")
+    // private List<CartDetail> cartDetail;
 
     public long getId() {
         return id;
@@ -134,19 +134,26 @@ public class Product {
         this.target = target;
     }
 
-    public List<CartDetail> getCartDetail() {
-        return cartDetail;
-    }
-
-    public void setCartDetail(List<CartDetail> cartDetail) {
-        this.cartDetail = cartDetail;
-    }
-
     @Override
     public String toString() {
         return "Product [id=" + id + ", name=" + name + ", price=" + price + ", image=" + image + ", detailDesc="
                 + detailDesc + ", shortDesc=" + shortDesc + ", quantity=" + quantity + ", sold=" + sold + ", factory="
-                + factory + ", target=" + target + ", cartDetail=" + cartDetail + "]";
+                + factory + ", target=" + target + "]";
     }
 
+    // public List<CartDetail> getCartDetail() {
+    // return cartDetail;
+    // }
+
+    // public void setCartDetail(List<CartDetail> cartDetail) {
+    // this.cartDetail = cartDetail;
+    // }
+
+    // @Override
+    // public String toString() {
+    // return "Product [id=" + id + ", name=" + name + ", price=" + price + ",
+    // image=" + image + ", detailDesc="
+    // + detailDesc + ", shortDesc=" + shortDesc + ", quantity=" + quantity + ",
+    // sold=" + sold + ", factory="
+    // + factory + ", target=" + target + ", cartDetail=" + cartDetail + "]";
 }
