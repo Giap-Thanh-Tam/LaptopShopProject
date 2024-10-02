@@ -64,7 +64,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <c:if test="${ empty cartDetails}">
+                                        <c:if test="${empty cartDetails}">
                                             <tr>
                                                 <td colspan="6">
                                                     Không có sản phẩm trong giỏ hàng
@@ -178,7 +178,7 @@
                                             <form:form action="/confirm-checkout" method="post" modelAttribute="cart">
                                                 <input type="hidden" name="${_csrf.parameterName}"
                                                     value="${_csrf.token}" />
-                                                <div style="display:block">
+                                                <div style="display:none">
                                                     <c:forEach var="cartDetail" items="${cart.cartDetails}"
                                                         varStatus="status">
                                                         <div class="mb-3">
@@ -198,8 +198,8 @@
                                                     </c:forEach>
                                                 </div>
                                                 <button
-                                                    class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4"
-                                                    type="button">Tiến Hành Thanh Toán</button>
+                                                    class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4">Tiến
+                                                    Hành Thanh Toán</button>
                                             </form:form>
 
                                         </div>

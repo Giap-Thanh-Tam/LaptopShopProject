@@ -147,6 +147,7 @@
     //     button.parent().parent().find('input').val(newVal);
     // });
     $('.quantity button').on('click', function () {
+        console.log('Button clicked');
         let change = 0;
 
         var button = $(this);
@@ -169,8 +170,6 @@
         const index = input.attr("data-cart-detail-index")
         const el = document.getElementById(`cartDetails${index}.quantity`);
         $(el).val(newVal);
-
-
 
         //get price
         const price = input.attr("data-cart-detail-price");
@@ -213,7 +212,7 @@
         // and 'VND' as the currency type for Vietnamese đồng
         const formatter = new Intl.NumberFormat('vi-VN', {
             style: 'decimal',
-            minimumFractionDigits: 0, // No decimal part for whole numbers
+            minimumFractionDigits: 0, // No decimal part for whole 0numbers
         });
 
         let formatted = formatter.format(value);
