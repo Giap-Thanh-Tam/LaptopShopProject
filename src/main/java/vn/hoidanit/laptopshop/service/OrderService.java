@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import vn.hoidanit.laptopshop.domain.Order;
 import vn.hoidanit.laptopshop.domain.OrderDetail;
 import vn.hoidanit.laptopshop.domain.Product;
+import vn.hoidanit.laptopshop.domain.User;
 import vn.hoidanit.laptopshop.repository.OrderDetailRepository;
 import vn.hoidanit.laptopshop.repository.OrderRepository;
 
@@ -50,6 +51,11 @@ public class OrderService {
         }
 
         this.orderRepository.deleteById(order.getId());
+    }
+
+    public List<Order> getOrderByUser(User user) {
+        return this.orderRepository.findByUser(user);
+
     }
 
 }
