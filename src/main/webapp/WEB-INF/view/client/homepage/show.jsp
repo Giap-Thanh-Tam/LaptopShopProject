@@ -95,7 +95,7 @@
                                                                     <p style="font-size: 15px; text-align: center; width: 100%; "
                                                                         class="text-dark fw-bold mb-3">
                                                                         <fmt:formatNumber type="number"
-                                                                            value="${products.price}" />
+                                                                            value="${products.price}" /> đ
                                                                     </p>
                                                                     <form method="post"
                                                                         action="/add-product-to-cart/${products.id}">

@@ -147,7 +147,7 @@ public class UserController {
 
     // Confirm delete user
     @PostMapping("/admin/user/delete")
-    public String postDeleteUpdateUser(Model model, @ModelAttribute("newUser") User user) {
+    public String postDeleteUser(Model model, @ModelAttribute("newUser") User user) {
         this.userService.deleteAUser(user.getId());
         return "redirect:/admin/user";
     }

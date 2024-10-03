@@ -78,7 +78,7 @@
                                     <i class="fa fa-phone-alt fa-3x text-white"></i>
                                 </div>
                                 <div class="featurs-content text-center">
-                                    <h5>Hỗ trợ 24/7</h5>
+                                    <h5>Hỗ trợ nhiệt tình 24/7</h5>
                                     <p class="mb-0">Hỗ trợ nhanh chóng</p>
                                 </div>
                             </div>
