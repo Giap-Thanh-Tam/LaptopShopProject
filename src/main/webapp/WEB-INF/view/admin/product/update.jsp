@@ -95,8 +95,8 @@
                                                     <c:set var="errorShortDesc">
                                                         <form:errors path="shortDesc" cssClass="invalid-feedback" />
                                                     </c:set>
-                                                    <label for="InputShortdesc1" class="form-label">Short description
-                                                        name</label>
+                                                    <label for="InputShortdesc1" class="form-label">Short
+                                                        description</label>
                                                     <form:input type="text"
                                                         class="form-control ${not empty errorShortDesc ? 'is-invalid' : ''}"
                                                         id="InputShortdesc1" path="shortDesc" />
